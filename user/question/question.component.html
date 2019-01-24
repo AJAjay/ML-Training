@@ -1,0 +1,121 @@
+<div *ngIf="userID != null; else notFound" class="mainDiv">
+
+  <!-- ToolBar -->
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>SurveyPro</span>
+      <span class="example-spacer"></span>
+      <div class="user-area">
+        <span class="userName">
+          Hi, {{userID}}
+        </span>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <!-- Card -->
+  <mat-card class="example-card">
+    <mat-card-content>
+
+      <!-- Loader -->
+      <app-loader [hidden]="!this.loader"></app-loader>
+
+      <!-- Form -->
+      <form [formGroup]="surveyForm" (submit)="onSubmit()">
+        <div *ngFor="let topic of topics;let i = index">
+          <div class="pages" id="page{{i+1}}">
+
+            <!-- Card Title -->
+            <div class="surveyName" *ngIf="surveyName">{{surveyName}}</div>
+            <div class="topicName" *ngIf="topic">Topic : {{topic.topic}}</div>
+
+            <!-- Question Slider  -->
+            <div class="questionHolder" *ngFor="let question of topic.questions;let j=index">
+              <mat-card class="question-card">
+                <p class="question" *ngIf="question"> {{j+1}}. {{question.question}}</p>
+                <div [ngSwitch]="question.questionType">
+
+                  <!-- radio Button -->
+                  <div *ngSwitchCase="'radioButton'">
+                    <div class="optionsholder">
+                      <div class="option" value="option" *ngFor="let option of question.options;let k = index">
+                        <input type="radio" name="group{{j+1}}" required value="{{option.option}}" (click)="addAnswer(question,option.option,j)">
+                        <span class="optionValue">{{option.option}}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!--checkbox-->
+                  <div *ngSwitchCase="'checkBox'">
+                    <div class="optionsholder">
+                      <div class="option" value="option" *ngFor="let option of question.options;let i = index">
+                        <input type="checkbox" id="option{{j+1}}" required (click)="check_Box($event,question, option.option, j)" name="group{{j+1}}"
+                          value="{{option.option}}">
+                        <span class="optionValue">{{option.option}}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- textField -->
+                  <div *ngSwitchCase="'textField'" class="textFieldContainer">
+                    <textarea formControlName="textArea" required (focusout)="addAnswer(question,null,j)" placeholder="Enter Here" id="text{{i}}{{j}}"></textarea>
+                  </div>
+
+                  <!-- slider -->
+                  <div *ngSwitchCase="'slider'" class="slideContainer">
+                    <input type="range" min="1" max="5" value="1" required (input)="slideValue(question,j,$event)" class="slider" id="myRange">
+                    <h1 class="optionValue">{{(this.slider_value.get(i+"_"+j))||"Rate"}}</h1>
+                  </div>
+
+                </div>
+
+                <!-- Additional Comments -->
+                <div *ngIf="question.comment" class="additionalCommentSection">
+                  <h1 class="commentLabel">Additional Comments
+                    <span>(Optional)</span>
+                  </h1>
+                  <textarea class="additionalTextArea" (focusout)="addAnswer(null,null,j)" placeholder="Comment here..." id="AdditionalComment{{i}}{{j}}"></textarea>
+                </div>
+
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+
+      <!-- Navigation   -->
+      <div class="navigation">
+        <div id="prev">
+          <button mat-raised-button color="primary" [disabled]="this.prev == 0" (click)="moveFirst()">
+            <<</button>
+              <!-- <input type="button" class="button" value="<<" [disabled]="this.prev == 0" (click)="moveFirst()"> -->
+              <button mat-raised-button color="primary" [disabled]="this.prev == 0" (click)="prevQuestion()">
+                <</button>
+                  <!-- <input type="button" class="button" value="<" [disabled]="this.prev == 0" (click)="prevQuestion()"> -->
+        </div>
+        <div class="done">
+          <button mat-raised-button color="primary" *ngIf="prev == topics?.length-1" (click)="disableCheck()">Submit</button>
+          <!-- <input type="button" [hidden]="prev != topics?.length-1" (click)="disableCheck()" value="Done" class="button"> -->
+        </div>
+        <div id="nxt">
+          <button mat-raised-button color="primary" [disabled]="this.next == (topics?.length+1)" (click)="nextQuestion()">></button>
+          <!-- <input type="button" class="button" value=">" [disabled]="this.next == (topics?.length+1)" (click)="nextQuestion()"> -->
+          <button mat-raised-button color="primary" [disabled]="this.next == (topics?.length+1)" (click)="moveLast()">>></button>
+          <!-- <input type="button" class="button" value=">>" [disabled]="this.next == (topics?.length+1)" (click)="moveLast()"> -->
+        </div>
+      </div>
+
+    </mat-card-actions>
+
+  </mat-card>
+</div>
+
+<ng-template #notFound>
+  <div class="notFound">
+    404 Page Not Found
+  </div>
+</ng-template>

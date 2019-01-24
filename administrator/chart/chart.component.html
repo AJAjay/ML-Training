@@ -1,0 +1,122 @@
+<!-- Main Div -->
+<div class="mainDiv">
+
+  <div class="heading">
+    <a [routerLink]="['/viewResultList']" class="backToList"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back to List</a>
+    <h1 class="pageTitle">Result</h1>
+    <mat-divider></mat-divider>
+  </div>
+
+  <div class="selector">
+    <div class="nameSelector">
+
+      <!-- DropDown for Result View Type (chart / Table) -->
+      <mat-form-field class="matField viewField">
+        <mat-select placeholder="View" [formControl]="viewControl" required>
+          <mat-option *ngFor="let type of viewTypes" [value]="type" (click)="getChart()">
+            {{type}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="viewControl.hasError('required')">Please choose an view type</mat-error>
+        <mat-hint>{{viewControl.value?.sound}}</mat-hint>
+      </mat-form-field>
+
+      <!-- DropDown for Topics of the Surver -->
+      <mat-form-field class="viewField">
+        <mat-select placeholder="Topics" [formControl]="topicControl" required>
+          <mat-option *ngFor="let topic of topicsList;let i=index" [value]="topic" (click)="getTopic(i)">
+            {{topic}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="topicControl.hasError('required')">Please choose an Topic</mat-error>
+        <mat-hint>{{topicControl.value?.sound}}</mat-hint>
+      </mat-form-field>
+
+      <!-- DropDown for Chart types -->
+      <mat-form-field *ngIf="this.viewControl.value == 'Chart'" class="viewField">
+        <mat-select placeholder="Chart Type" [formControl]="chartControl" (selectionChange)="getChart()" required>
+          <mat-option *ngFor="let type of types" [value]="type">{{type}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="chartControl.hasError('required')">Please choose an chart type</mat-error>
+        <mat-hint>{{chartControl.value?.sound}}</mat-hint>
+      </mat-form-field>
+
+      <div>
+        <label>From Date</label>
+        <br>
+        <input type="date" [formControl]="fromDateControl" (input)="sortOnDate(fromDateControl.value,toDateControl.value)">
+      </div>
+      <div>
+        <label>To Date </label><br>
+        <input type="date" [formControl]="toDateControl" (input)="sortOnDate(fromDateControl.value,toDateControl.value)">
+      </div>
+      <div class="btncontainer">
+        <button type="button" class="button-overall" (click)="overallRating()">Rating</button>
+        <button type="button" class="button-overall" (click)="overallGraph()">Graph</button>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+
+
+  <!-- Switch Chart / Table -->
+  <div class="container" [ngSwitch]="this.viewControl.value">
+
+    <!-- chart view -->
+    <div *ngSwitchCase="'Chart'">
+
+      <!-- loader -->
+      <app-loader *ngIf="this.loader"></app-loader>
+
+      <div class="charts">
+        <div class="chartHolder" *ngFor="let result of numChart;let i = index">
+          <mat-card class="question-card">
+            <p class="question">{{i+1}}. {{result.question}}</p>
+
+            <canvas id="result{{i}}" *ngIf="questionType(i); else execute"></canvas>
+            <ng-template #execute>
+              <div *ngFor="let option of this.numChart[i].options;let j=index">
+                <h5 class="container">{{j+1}}. {{option}}</h5>
+              </div>
+            </ng-template>
+          </mat-card>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- table view -->
+    <div *ngSwitchCase="'Table'">
+
+      <!-- loader -->
+      <app-loader *ngIf="this.loader"></app-loader>
+
+      <div *ngIf="!this.loader" class="tables">
+        <div class="tableHolder" *ngFor="let result of numChart;let i=index ">
+          <mat-card class="question-card">
+            <p class="question">{{i+1}}. {{result.question}}</p>
+            <table *ngIf="questionType(i); else execute">
+              <tr>
+                <td class="th">Options</td>
+                <td class="th">Count</td>
+              </tr>
+              <tr *ngFor="let opt of option_value[i];let i=index">
+                <td>{{opt.option}}</td>
+                <td>{{opt.value}}</td>
+              </tr>
+            </table>
+            <ng-template #execute>
+              <div *ngFor="let option of this.numChart[i].options;let j=index">
+                <h5 class="container">{{j+1}}. {{option}}</h5>
+              </div>
+            </ng-template>
+          </mat-card>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

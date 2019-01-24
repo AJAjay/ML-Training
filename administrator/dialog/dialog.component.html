@@ -1,0 +1,33 @@
+<div class="mainDiv">
+  <h1>SurveyPro</h1>
+  <mat-divider></mat-divider>
+  <div *ngIf="pass;else execute">
+
+    <span *ngIf="data.email" class="closeButton" (click)="close()">x</span>
+    <h3 class="heading">{{data.heading}}</h3>
+
+    <div *ngIf="data.delete">
+      <button mat-raised-button class="button-ok" color="primary" (click)="deleteSurvey()">Yes</button>
+      <button mat-raised-button class="button-ok" color="primary" (click)="close()">No</button>
+    </div>
+
+    <div *ngIf="data.link" class="linkDiv">
+      <input type="text" id="inputLink" value="{{data.link}}">
+      <input type="button" class="button-small" value="Copy" (click)="copyText()">
+    </div>
+
+    <div class="email" *ngIf="data.email">
+      <input type="email" #email placeholder="enter email">
+      <button mat-raised-button class="button-send" color="primary" (click)="sendEmail(email.value)">Send</button>
+    </div>
+
+    <button mat-raised-button class="button-ok" color="primary" *ngIf="!data.email && !data.delete" (click)="close()">OK</button>
+
+  </div>
+  <ng-template #execute>
+    <h3 class="heading">{{result}}</h3>
+    <!-- <h5>Note: Please provide valid prodapt email ID </h5> -->
+    <button mat-raised-button class="button-ok" color="primary" (click)="close()">OK</button>
+  </ng-template>
+
+</div>

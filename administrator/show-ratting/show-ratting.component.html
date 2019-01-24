@@ -1,0 +1,11 @@
+<div class="mainDiv">
+  <span class="closeButton" (click)="close()">x</span>
+  <div *ngIf="data!=0;else execute">
+    <h2 class="overall">Overall View</h2>
+    <ngb-rating class="star" [(rate)]="data"> hello </ngb-rating>
+    <div class="textDiv">Many people feels <b>{{value[data-1]}}</b> about the survey </div>
+  </div>
+  <ng-template #execute>
+    <div class="textDiv">You don't have overall rating for the survey</div>
+  </ng-template>
+</div>

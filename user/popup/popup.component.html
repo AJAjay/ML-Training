@@ -1,0 +1,26 @@
+<div *ngIf="generalReady" class="mainDiv">
+  <div *ngIf="!data.general">
+    <h3 class="heading">Please answer all the Questions</h3>
+    <button mat-raised-button class="button-ok" color="primary" [disabled]="this.prev == 0" (click)="close()">OK</button>
+    <!-- <input type="button" class="button" value="Close" [disabled]="this.prev == 0" (click)="close()"> -->
+  </div>
+  <div *ngIf="data.general">
+    <h1>User Details</h1>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+      <table formArrayName="general">
+        <tr *ngFor="let data of general;let i=index">
+          <td>
+            <label>{{data.question}} : </label>
+          </td>
+          <td [formGroupName]="i" *ngIf="data.questionType =='textBox'">
+            <input formControlName="answer" type="text" placeholder="type here">
+          </td>
+          <td [formGroupName]="i" *ngIf="data.questionType =='datePicker'">
+            <input type="date" formControlName="answer">
+            </td>
+        </tr>
+      </table>
+      <button type="submit" mat-raised-button class="button-ok" color="primary" [disabled]="myForm.invalid" (click)="close()">Next</button>
+    </form>
+  </div>
+</div>

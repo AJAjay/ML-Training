@@ -1,0 +1,155 @@
+* {
+    box-sizing: border-box;
+}
+
+/* MainDiv */
+
+.mainDiv {
+    width: 100%;
+    padding: 30px 50px;
+}
+
+/* Heading */
+
+.heading .searchContainer {
+    float: right;
+    margin-top: -5px;
+    margin-right: -5px;
+    flex-direction: row;
+}
+
+.heading .searchContainer i {
+    flex: 2;
+    margin-left: -35px;
+    width: 40px;
+    padding: 10px;
+    border-radius: 2px;
+}
+
+.heading .searchContainer input[type="text"] {
+    width: 200px;
+    height: 40px;
+    border-radius: 2px;
+    border: 1px solid gainsboro;
+    padding: 5px;
+    transition: width 0.4s ease-in-out;
+}
+
+.heading .searchContainer input[type="text"]:focus {
+    border: 1px solid rgb(141, 140, 140);
+    width: 350px
+}
+
+/* Survey List */
+
+.adminSurveys h1 {
+    clear: both;
+    float: left;
+    font-family: candara;
+    font-size: 2rem;
+    margin: 30px auto;
+    font-weight: 500;
+}
+
+.noSurvey {
+    min-height: 60px;
+    clear: both;
+    padding: 20px;
+}
+
+/* Table */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px auto;
+    font-size: 13px;
+    font-weight: 500;
+    background: #fff;
+    box-shadow: 1px 1px 10px rgb(168, 168, 168);
+}
+
+table tr,
+table td,
+table th {
+    border: 1px solid rgba(0, 0, 0, .12);
+}
+
+table td,
+table th {
+    width: 100%;
+    padding: 10px;
+}
+
+table th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 60px;
+    background-color: #d9dadd;
+    font-family: "candara";
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+table td {
+    height: 50px;
+}
+
+/* Button */
+
+.action {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+}
+
+button i {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid rgb(228, 227, 227);
+    box-shadow: 1px 1px 1px rgb(168, 168, 168);
+    background: #fff;
+    font-size: 20px;
+    transition: .5s;
+}
+
+button:not(:disabled) i:hover {
+    transform: rotateY(180deg);
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled i{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.popUp {
+    display: none;
+    width: 92%;
+    position: absolute;
+    background: rgba(0, 0, 0, .8);
+    padding: 20px;
+    left: 51px;
+    height: 72px;
+    justify-content: center;
+}
+.popUp p {
+    text-align: center;
+    color: #fff;
+    font-family: 'candara';
+    font-size: 20px;
+}
+.popUp .button-small {
+    margin: 1px 10px;
+    width: 50px;
+    cursor: pointer;
+    height: 30px;
+}
+.popUp .button-small:hover{
+    background: gray;
+}

@@ -1,0 +1,34 @@
+.page-link {
+    cursor: pointer;
+}
+
+.mainDiv{
+    margin-top: 40px;
+}
+nav {
+    float: right;
+}
+
+.displayPageRange {
+    float: left;
+    margin-right: 5px;
+    font-size: 15px;
+}
+
+.page-link {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid rgb(228, 227, 227);
+    box-shadow: 1px 1px 1px rgb(168, 168, 168);
+    background: #fff;
+    transition: .5s;
+    margin-right: 5px;
+}
+
+.page-link:hover {
+    background: rgb(201, 200, 200);
+}
+
+.displayPageRange {
+    margin-bottom: 20px;
+}

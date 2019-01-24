@@ -1,0 +1,64 @@
+* {
+    text-decoration: none;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+}
+
+.mainDiv {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: url(/../../assets/images/login.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.backgroundOverlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .1);
+}
+
+.mainBox {
+    position: absolute;
+    left: 10%;
+    right: 50%;
+    top: 30%;
+    bottom: 30%;
+    margin: auto;
+}
+
+.loginBox {
+    overflow: auto;
+    height: auto;
+    max-height: 300px;
+    width: 350px;
+    padding: 20px;
+    padding-top: 30px;
+    background: #fff;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 1px #cccccc;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+input {
+    padding: 10px;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    border: 1px solid #cccccc;
+    transition: .5s;
+}
+
+.button {
+    width: 100%;
+}

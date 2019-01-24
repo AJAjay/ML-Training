@@ -1,0 +1,21 @@
+<div class="mainDiv">
+  <div class="backgroundOverlay">
+    <div class="mainBox">
+      <div class="loginBox">
+        <h2>Your Email</h2>
+        <br>
+        <form [formGroup]="linkdetailsform" (submit)="onSubmit()" class="form-inline">
+          <input type="text" formControlName="email" required placeholder="EmailId">
+          <!-- <div *ngFor="let obj of questions?.general; let i=index">
+            <div>
+              <label>{{obj.question}}:</label>
+              <input type="text" placeholder="Answer" (input)="addAnswer(obj.question,$event,i)">
+            </div>
+          </div> -->
+          <!-- <button class="button" [disabled]="answer?.length != questions?.general.length" type="submit" class="button">Proceed</button> -->
+          <button type="submit" class="button">Proceed</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

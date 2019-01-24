@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+}
+
+.mainDiv {
+    /* padding: 10px; */
+    font-family: 'candara';
+}
+
+h1{
+    font-size: 25px;
+    color: #686767;
+    margin-bottom: 10px;
+}
+
+.button-ok {
+    margin-top: 40px;
+    position: relative;
+    margin-left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.heading {
+    font-size: 20px;
+    text-align: center;
+    margin: 10px;
+}
+
+/* .link {
+    margin-top: 10px;
+    text-align: center;
+    color: rgb(98, 98, 99);
+} */
+
+.email {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+input[type="email"] {
+    width: 250px;
+    height: 35px;
+    border: 1px solid #bdbbbb;
+    padding: 10px;
+    margin: 10px 5px
+}
+
+input[type="text"],
+select {
+    width: 85%;
+    height: 35px;
+    border: 1px solid var(--div-shadow-color);
+    padding: 5px;
+    margin: 10px 5px;
+}
+
+.linkDiv .button-small {
+    width: 35px;
+    outline: none;
+    height: 35px;
+    padding: 2px;
+    font-size: 9px;
+    letter-spacing: 1px;
+    background: var(--button-bg-color);
+    cursor: pointer;
+    border: none;
+    color: rgb(238, 236, 236);
+    border-radius: 1px;
+    box-shadow: 1px 1px 2px black;
+}
+.linkDiv .button-small:focus {
+    background: rgb(53, 26, 206);
+}
+
+.button-send {
+    height: 35px;
+    margin-top: 10px;
+}
+
+.closeButton {
+    cursor: pointer;
+    float: right;
+    margin-top: -30px;
+    margin-right: -15px;
+    font-weight: 600;
+}
+
+.closeButton:hover {
+    color: rgb(97, 96, 96);
+}

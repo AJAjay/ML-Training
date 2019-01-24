@@ -1,0 +1,242 @@
+* {
+    box-sizing: border-box;
+}
+
+.mainDiv {
+    width: 100%;
+    padding: 30px 50px;
+    margin-bottom: 20px;
+}
+
+.container{
+    margin-top: 40px;
+}
+.selector {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.nameSelector {
+    display: grid;
+    width: 100%;
+    margin: 20px 0;
+    grid-template-columns: repeat(6, 180px);
+}
+
+.btncontainer {
+    margin-top: 24px;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 50% 50%;
+}
+
+label {
+    font-family: "candara";
+    font-weight: 500;
+    font-size: 13px;
+    color: #6e6e6e;
+}
+
+.button-overall {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: .3s;
+    font-size: 15px;
+    height: 40px;
+    width: 80px;
+    padding: 5px;
+    letter-spacing: 1px;
+    color: #fff;
+    border-radius: 1px;
+    background: var(--button-bg-color);
+    box-shadow: 1px 1px 2px black;
+}
+
+input[type="date"] {
+    width: 160px;
+    height: 40px;
+    border: 1px solid var(--div-shadow-color);
+    box-shadow: 1px 1px 1px rgb(168, 168, 168);
+    padding: 5px;
+    margin: 5px 0px;
+    
+}
+
+.heading a {
+    float: right;
+}
+
+.drop {
+    background: rgb(236, 223, 223);
+    margin: 5px;
+    padding: 10px;
+    height: 60px;
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 25% 15% 60%;
+    margin-bottom: 20px;
+}
+
+.viewField {
+    margin: 5px;
+    padding: 10px;
+}
+
+
+.button {
+    width: 110px;
+    font-size: 14px;
+    height: 40px;
+    margin: 10px;
+    padding: 2px;
+}
+
+/* Charts */
+
+canvas {
+    padding: 10px;
+}
+
+.charts {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 19px;
+
+}
+
+.question {
+    font-family: 'candara';
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    padding: 20px;
+    background:gainsboro;
+}
+
+.question-card {
+    width: 97%;
+    padding: 0;
+    padding-bottom: 20px;
+    border: 1px solid gainsboro;
+    max-height: 450px;
+    overflow: auto;
+}
+
+/* Tables */
+
+.tables {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 20px;
+}
+
+.tableHolder {
+    padding: 10px;
+}
+
+
+table {
+    padding: 10px;
+    border-collapse: collapse;
+    width: 90%;
+    margin: 20px auto;
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: 1px 1px 10px rgb(168, 168, 168);
+}
+
+table td,
+table th {
+    width: 100%;
+    padding: 10px;
+}
+
+table td {
+    border-left: 1px solid rgba(0, 0, 0, .12);
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+}
+
+table tr {
+    background-color: #fff;
+}
+
+[type="date"] {
+    background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+}
+
+[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+::placeholder {
+    color: var(--div-shadow-color);
+    color: grey;
+    font-size: 12px;   
+    letter-spacing: 1px;
+}
+
+
+@media(max-width: 600px) {
+    .charts .chartHolder,
+    .tables .tableHolder {
+        width: 500px;
+        height: 300px;
+    }
+    .charts,
+    .tables {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media(max-width: 500px) {
+    .charts .chartHolder,
+    .tables .tableHolder {
+        width: 330px;
+        height: 300px;
+    }
+}
+
+@media(max-width: 1200px) {
+    .charts .chartHolder,
+    .tables .tableHolder {
+        width: 350px;
+        height: 350px;
+    }
+}
+
+@media(max-width: 950px) {
+    .charts .chartHolder,
+    .tables .tableHolder {
+        width: 400px;
+        height: 400px;
+    }
+    .charts,
+    .tables {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 850px) {
+    .charts .chartHolder,
+    .tables .tableHolder {
+        width: 350px;
+        height: 350px;
+    }
+}
+
+@media(max-width: 700px) {
+    .charts .chartHolder,
+    .tables .tableHolder {
+        width: 300px;
+        height: 300px;
+    }
+    .charts,
+    .tables {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

@@ -1,0 +1,180 @@
+* {
+    transition: .5s;
+    box-sizing: border-box;
+}
+
+.matField {
+    margin: 20px 20px;
+}
+
+.selector {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.nameSelector {
+    display: grid;
+    width: 100%;
+    margin: 20px 0;
+    grid-template-columns: repeat(6, 200px);
+    justify-content: space-between;
+}
+
+.btncontainer {
+    margin-top: 24px;
+    display: grid;
+    width: 100%;
+    height: 40px;
+    grid-template-columns: 50% 50%;
+}
+
+.button {
+    height: 40px;
+}
+
+.content {
+    overflow-x: scroll !important;
+    max-height: 700px;
+}
+
+.mainDiv {
+    width: 100%;
+    padding: 30px 50px;
+}
+
+h4 {
+    padding: 10px;
+    font-size: 20px;
+    font-family: "candara";
+}
+
+label {
+    font-family: "candara";
+    font-weight: 500;
+    font-size: 13px;
+    color: #6e6e6e;
+}
+
+span {
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+    width: 180px;
+    height: 40px;
+    border: 1px solid var(--div-shadow-color);
+    box-shadow: 1px 1px 1px rgb(168, 168, 168);
+    padding: 5px;
+    margin: 5px 0px;
+}
+
+.showbtn {
+    padding: 0px;
+}
+
+.showbtn button {
+    margin: 0px;
+}
+
+/* Table */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px auto;
+    font-size: 13px;
+    font-weight: 500;
+    background: #fff;
+    box-shadow: 1px 1px 10px rgb(168, 168, 168);
+}
+
+table tr,
+table td,
+table th {
+    border: 1px solid rgba(0, 0, 0, .12);
+}
+
+table td,
+table th {
+    width: 100%;
+    padding: 10px;
+}
+
+table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+table tr:nth-child(even) {
+    background-color: #fff;
+}
+
+table th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 60px;
+    background-color: #d9dadd;
+    font-family: "candara";
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+table td {
+    height: 50px;
+    text-align: center;    
+}
+.blank_row {
+    height: 10px !important;
+    border: none;
+}
+
+.blank_row td {
+    box-shadow: none;
+}
+
+.heading {
+    position: absolute;
+    border-bottom: none;
+    visibility: hidden;
+}
+
+.average {
+    font-family: "candara";
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.button {
+    margin: 0 10px;
+}
+
+.participantName {
+    font-size: 15px;
+    color: var( --text-secondary-color);
+    background: var(--main-header-bg-color);
+}
+
+.overall {
+    background-color: #dfe3ee;
+    font-family: "candara";
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.btncontainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+table>thead>tr>th {
+    white-space: nowrap;
+}
+.showOption{
+    margin-top: 20px;
+}
+.showSelect{
+    width: 60px;
+    height: 30px;
+}

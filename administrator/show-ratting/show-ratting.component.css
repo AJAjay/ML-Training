@@ -1,0 +1,32 @@
+body{
+   background: #dfe3ee;
+}
+.star {
+      margin-left:20px;
+      font-size: 3rem;
+      color: #CFB53B;
+    }
+.overall{
+    
+    text-align: center;
+    font-family: "candara";
+    font-weight: 600;
+   
+}
+.mainDiv {
+    height: auto;
+    min-height: 100%;
+    width: 100%;
+}
+.textDiv{
+  margin: 20px;
+}
+
+.closeButton{
+    cursor: pointer;
+    float: right;
+    font-weight: 600;
+}
+.closeButton:hover{
+    color: rgb(97, 96, 96);
+}

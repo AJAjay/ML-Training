@@ -1,0 +1,123 @@
+* {
+    transition: .5s;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    padding: 30px 50px;
+}
+
+.heading a {
+    float: right;
+}
+
+form {
+    margin-top: 20px;
+}
+
+.topics {
+    margin: 10px 0;
+    background: #fff;
+    line-height: 2;
+}
+
+.questions {
+    border: 1px solid #bdbbbb;
+    box-shadow: 1px 1px 10px #bdbbbb;
+    padding: 20px;
+    padding-top: 5px;
+    background: #fff;
+    margin: 10px 0;
+    line-height: 2;
+}
+
+legend {
+    margin-top: 20px;
+}
+
+legend,
+label {
+    font-family: "candara";
+}
+
+input[type="text"],
+select {
+    width: 250px;
+    height: 40px;
+    border: 1px solid #bdbbbb;
+    padding: 5px;
+    margin: 10px 5px;
+}
+
+::placeholder {
+    color: #bdbbbb;
+}
+
+.button {
+    margin: 10px 0px;
+    margin-right: 10px;
+}
+
+.accordionContainer {
+    margin: 20px 0px;
+    width: 100%;
+}
+
+.accordionButton {
+    width: 100%;
+    height: 50px;
+    letter-spacing: 1px;
+    text-align: left;
+    font-size: 16px;
+}
+
+h3 {
+    font-family: candara;
+}
+
+.plus,
+.minus {
+    position: absolute;
+    margin-top: 18px;
+    margin-left: -36px;
+    width: 16px;
+    height: 16px;
+    transition: .2s;
+    color: #fff;
+}
+
+.plus {
+    display: inline;
+}
+
+.minus {
+    display: none;
+}
+
+.deleteTopic {
+    position: relative;
+    width: 16px;
+    height: 16px;
+}
+
+.accordionContent {
+    padding: 0px 20px;
+    border-left: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    max-height: 100%;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+i {
+    cursor: pointer;
+}
+
+i:hover {
+    text-shadow: 1px 1px 1px rgb(204, 204, 204);
+}
+
+input[type="text"].quesInput {
+    width: 550px;
+}

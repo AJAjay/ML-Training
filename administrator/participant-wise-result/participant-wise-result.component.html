@@ -1,0 +1,98 @@
+<div class="mainDiv">
+  <h1 class="pageTitle">Participant Result</h1>
+  <mat-divider></mat-divider>
+  <div class="selector">
+
+    <div>
+      <label for="surveyName">SurveyName</label>
+      <br>
+      <select (change)="selectSurveyName($event.target.value)">
+        <option value="selectHere" selected hidden>Select here</option>
+        <option *ngFor="let obj of surveyNames" [value]="obj.surveyName">{{obj.surveyName}}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="participant">Participant</label>
+      <br>
+      <select (change)="selectParticipant($event.target.value)">
+        <option value="selectHere" selected hidden>Select here</option>
+        <option *ngFor="let obj of participants" [value]="obj.userID">{{obj.userID}}</option>
+        <option *ngIf="participants?.length == 0" value="No participants yet" disabled>No participants yet</option>
+      </select>
+    </div>
+
+    <div>
+      <div class="btncontainer">
+        <button type="button" class="button" (click)="getResult()">Show</button>
+        <button type="button" class="button" [disabled]="!exportTable && !participantData?.length>0" (click)="ExportToExcel()">Export</button>
+      </div>
+    </div>
+
+  </div>
+
+  <mat-divider></mat-divider>
+
+
+  <div class="content">
+
+    <table #table>
+      <table class="table" class="table-border" *ngFor="let participant of participantData;let i=index">
+        <tr class="heading">
+          <td>Survey Name : {{surveyName}}</td>
+        </tr>
+        <tr *ngIf="this.participant">
+          <td class="participantName">Participant Name : {{participant.userID.split("@")[0]}}</td>
+          <td class="participantName"></td>
+        </tr>
+        <tr *ngIf="participant.general !=null" class="blank_row">
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td *ngIf="participant.general !=null" class="table-topic">General</td>
+          <td *ngIf="participant.general !=null" class="table-topic"></td>
+        </tr>
+        <tbody class="topics" *ngFor="let question of participant.general;let i=index">
+          <tr>
+            <td>{{question.question}}</td>
+            <td>{{question.answer}}</td>
+          </tr>
+        </tbody>
+        <tbody class="topics" *ngFor="let topic of participant.topics;let i=index">
+          <tr class="blank_row">
+            <td colspan="2"></td>
+          </tr>
+          <tr>
+            <td class="table-topic">{{topic.topic}}</td>
+            <td class="table-topic"></td>
+          </tr>
+
+          <ng-container *ngFor="let question of topic.questions;let j=index">
+            <tr>
+              <td>{{question.question}}</td>
+              <td *ngIf="question.question_type!='textField'">{{objectKeys(question.options)}}</td>
+              <td *ngIf="question.question_type=='textField'">{{question.options}}</td>
+            </tr>
+            <tr *ngIf="question.comment">
+              <td>Additional Comments</td>
+              <td>{{question.comment}}</td>
+            </tr>
+          </ng-container>
+
+          <tr *ngIf="topic.sliderAverage != null">
+            <td class="average">Average</td>
+            <td class="average">{{sliderValue[(topic.sliderAverage)-1]}}</td>
+          </tr>
+          <tr></tr>
+        </tbody>
+        <tr *ngIf="participant.overallAverage != null">
+          <td class="overall">Overall Average</td>
+          <td class="overall">{{sliderValue[(participant.overallAverage)-1]}}</td>
+        </tr>
+      </table>
+
+    </table>
+
+  </div>
+
+</div>

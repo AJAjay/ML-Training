@@ -1,0 +1,129 @@
+* {
+    transition: .5s;
+    box-sizing: border-box;
+}
+
+.mainDiv {
+    width: 100%;
+    padding: 30px 50px;
+}
+
+h1 {
+    font-family: candara;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+h4 {
+    padding: 10px;
+    font-size: 20px;
+    font-family: "candara";
+}
+
+label {
+    font-family: "candara";
+}
+
+span {
+    font-weight: 500;
+}
+
+input[type="text"],
+select {
+    width: 250px;
+    height: 40px;
+    border: 1px solid var(--div-shadow-color);
+    padding: 5px;
+    margin: 20px 5px;
+    margin-right: 20px;
+}
+
+.button {
+    height: 40px;
+}
+
+/* Table */
+
+table {
+    border-collapse: collapse;
+    width: 95%;
+    margin: 20px auto;
+    font-size: 13px;
+    font-weight: 500;
+    /* box-shadow: 1px 1px 10px rgb(168, 168, 168); */
+}
+
+table tr,
+table td,
+table th {
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+}
+
+table td,
+table th {
+    width: 100%;
+    padding: 10px;
+}
+
+table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+table tr:nth-child(even) {
+    background-color: #fff;
+}
+
+.table-topic {
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-family: "candara";
+    text-transform: uppercase;
+    background: #d9dadd;
+    width: 100%;
+    font-weight: 600;
+}
+
+table th {
+    height: 60px;
+    /* background-color: #d9dadd; */
+    font-family: "candara";
+    font-size: 15px;
+    letter-spacing: 1px;
+    /* text-transform: uppercase; */
+    text-align: center;
+}
+
+.blank_row {
+    height: 10px !important;
+    border: none;
+    /* overwrites any other rules */
+}
+
+.blank_row td {
+    background-color: #dfe3ee;
+    box-shadow: none;
+}
+
+.heading {
+    position: absolute;
+    opacity: 0;
+    border-bottom: none;
+}
+.average{
+    font-family: "candara";
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.button {
+    margin: 0 auto;
+    width: 60px;
+    height: 30px;
+    padding: 5px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}

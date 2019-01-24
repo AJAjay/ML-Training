@@ -1,0 +1,73 @@
+<div class="mainDiv">
+  <div class="mainBox">
+    <div class="loginBox">
+      <form [formGroup]="signUpForm" (submit)="onSubmit()" class="form-inline">
+        <h1>New Admin Sign Up</h1>
+        <input type="text" placeholder="First Name" formControlName="firstName" required pattern="^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$">
+        <div class="text-dangerRed" *ngIf="!signUpForm.get('firstName').valid && signUpForm.get('firstName').touched">
+          <span *ngIf="firstName.errors?.required">
+            Please enter First name.
+          </span>
+          <span *ngIf="firstName.errors?.pattern">
+            Invalid First name.
+          </span>
+        </div>
+        <input type="text" placeholder="Last Name" formControlName="lastName" required pattern="^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$">
+        <div class="text-dangerRed" *ngIf="!signUpForm.get('lastName').valid && signUpForm.get('lastName').touched">
+          <span *ngIf="lastName.errors?.required">
+            Please enter Last name.
+          </span>
+          <span *ngIf="lastName.errors?.pattern">
+            Invalid Last name.
+          </span>
+        </div>
+        <input type="text" placeholder="Email" formControlName="email" required pattern="^([a-z0-9_\-\.]+)@([a-z0-9_\-\.]+)\.([a-z]{2,5})$">
+        <div class="text-dangerRed" *ngIf="!signUpForm.get('email').valid && signUpForm.get('email').touched">
+          <span *ngIf="email.errors?.required">
+            Please enter Email.
+          </span>
+          <span *ngIf="email.errors?.pattern">
+            Invalid Email.
+          </span>
+        </div>
+        <!-- <input type="text" placeholder="User Name" formControlName="userName" required>
+        <div class="text-dangerRed" *ngIf="!signUpForm.get('userName').valid && signUpForm.get('userName').touched">
+          <span *ngIf="userName.errors?.required">
+            Please enter User Name.
+          </span> -->
+        <!-- <span *ngIf="userName.errors?.pattern">
+            Invalid Email.
+          </span> -->
+        <!-- </div> -->
+        <input type="password" placeholder="Password" formControlName="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
+        <div class="text-dangerRed" *ngIf="!signUpForm.get('password').valid && signUpForm.get('password').touched">
+          <span *ngIf="password.errors?.required">
+            Please enter Password.
+          </span>
+          <span *ngIf="password.errors?.pattern">
+            Password should contain 8 charactes with atleast
+            <br>one uppercase, one number and one special character.
+          </span>
+        </div>
+        <!-- <input type="text" placeholder="Supervisor Email" formControlName="supervisor_email" required pattern="^([a-z0-9_\-\.]+)@([a-z0-9_\-\.]+)\.([a-z]{2,5})$">
+        <div class="text-dangerRed" *ngIf="!signUpForm.get('supervisor_email').valid && signUpForm.get('supervisor_email').touched">
+          <span *ngIf="supervisor_email.errors?.required">
+            Please enter Email.
+          </span>
+          <span *ngIf="supervisor_email.errors?.pattern">
+            Invalid Email.
+          </span>
+        </div> -->
+        <div *ngIf="validateError!=''" class="text-dangerRed">
+          {{validateError}}
+        </div>
+        <div class="btn-grid">
+          <button type="button" mat-raised-button class="button" color="primary" (click)="backToLogin()">Back to login</button>
+          <!-- <button class="button" (click)="backToLogin()">Back to login</button> -->
+          <button mat-raised-button class="button" color="primary" [disabled]="this.signUpForm.invalid">Signup</button>
+          <!-- <button type="submit" class="button" [disabled]="this.signUpForm.invalid">Signup</button> -->
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

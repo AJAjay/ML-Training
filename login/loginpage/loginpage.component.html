@@ -1,0 +1,40 @@
+<div class="mainDiv">
+  <div class="backgroundOverlay">
+    <div class="mainBox">
+      <div class="loginBox">
+        <form [formGroup]="loginForm" (submit)="onSubmit()" novalidate autocomplete="off">
+          <span class="logoContainer">
+            <img src="../../../assets/images/Survey Pro_logo.jpg" alt="">
+          </span>
+          <span>
+            <h1>SurveyPro</h1>
+          </span>
+          <input type="text" formControlName="email" placeholder="{{login_holder}}" required>
+          <div class="col-sm-12 text-dangerRed" *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched">
+            <span *ngIf="email.errors?.required">
+              Please enter userId.
+            </span>
+            <!-- <span *ngIf="email.errors?.pattern">
+              Invalid email.
+            </span> -->
+          </div>
+          <input type="password" id="password" formControlName="password" placeholder="Password" autocomplete="new-password">
+          <i class="fa fa-eye" aria-hidden="true" (click)="showPassword()"></i>
+          <div class="text-dangerRed" *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+            <span *ngIf="password.errors?.required">
+              Please enter Password.
+            </span>
+          </div>
+          <button mat-raised-button class="button" color="primary" [disabled]="loginForm.invalid">Login</button>
+          <!-- <button type="submit" class="button" [disabled]="loginForm.invalid">Login</button> -->
+          <div class="login">
+            <a (click)="adminLogin()">{{login}}</a>
+          </div>
+          <div *ngIf="login == 'Login as User'" class="signup">
+            <a (click)="goToSignUp()">New Admin SignUp</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,129 @@
+/* 1 */
+{
+    "_id" : ObjectId("5c18e08bc93f451230cfee17"),
+    "createDate" : "2018-12-18T12:03:24.078Z",
+    "userID" : "chitra.d",
+    "surveyName" : "Travel Feedback",
+    "createdBy" : "chitra.d",
+    "topics" : [ 
+        {
+            "questions" : [ 
+                {
+                    "options" : [],
+                    "question" : "Onward trip",
+                    "questionType" : "slider"
+                }, 
+                {
+                    "options" : [],
+                    "question" : "Return trip",
+                    "questionType" : "slider"
+                }, 
+                {
+                    "options" : [],
+                    "question" : "Connection time",
+                    "questionType" : "slider"
+                }
+            ],
+            "topic" : "Flight tickets"
+        }, 
+        {
+            "questions" : [ 
+                {
+                    "options" : [],
+                    "question" : "Response time in uploading forex",
+                    "questionType" : "slider"
+                }, 
+                {
+                    "options" : [],
+                    "question" : "Usage of World Money Card",
+                    "questionType" : "slider"
+                }
+            ],
+            "topic" : "Forex"
+        }, 
+        {
+            "questions" : [ 
+                {
+                    "options" : [],
+                    "question" : "Extensions",
+                    "questionType" : "slider"
+                }
+            ],
+            "topic" : "Travel Insurance"
+        }, 
+        {
+            "questions" : [ 
+                {
+                    "options" : [],
+                    "question" : "Document guidance",
+                    "questionType" : "slider"
+                }, 
+                {
+                    "options" : [],
+                    "question" : "Queries handling",
+                    "questionType" : "slider"
+                }, 
+                {
+                    "options" : [],
+                    "question" : "Induction session",
+                    "questionType" : "slider"
+                }, 
+                {
+                    "options" : [],
+                    "question" : "Processing time",
+                    "questionType" : "slider"
+                }
+            ],
+            "topic" : "Visa"
+        }, 
+        {
+            "questions" : [ 
+                {
+                    "options" : [],
+                    "question" : "Connectivity ",
+                    "questionType" : "slider"
+                }, 
+                {
+                    "options" : [],
+                    "question" : "Response time in resolving issues",
+                    "questionType" : "slider"
+                }
+            ],
+            "topic" : "Travel Phone"
+        }, 
+        {
+            "questions" : [ 
+                {
+                    "options" : [],
+                    "question" : "Place of stay",
+                    "questionType" : "textField"
+                }, 
+                {
+                    "options" : [],
+                    "question" : "Connectivity to work locations",
+                    "questionType" : "textField"
+                }
+            ],
+            "topic" : "Accomodation"
+        }
+    ],
+    "general" : [ 
+        {
+            "question" : "Name"
+        }, 
+        {
+            "question" : "Country travelled"
+        }, 
+        {
+            "question" : "Project"
+        }, 
+        {
+            "question" : "Travel start date"
+        }, 
+        {
+            "question" : "Travel return date"
+        }
+    ],
+    "link" : "192.168.51.28:4200/5c18e08bc93f451230cfee17",
+    "status" : "reviewed"
+}

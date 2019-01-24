@@ -1,0 +1,29 @@
+<!-- <h1>Topics</h1>
+<div  class="scrollbar menu" >
+  <ul *ngFor="let value of data;let i=index">
+    <li><a  (click)="passList()" routerLink="/chart">{{i+1}}.{{value.topic}}</a></li>
+  </ul>
+</div>  
+ <cdk-virtual-scroll-viewport class="example-viewport">
+  <div *cdkVirtualFor="let value of data" class="example-item">{{value.topic}}</div>
+</cdk-virtual-scroll-viewport> -->
+<div class="mainDiv">
+  <span class="closeButton" (click)="close()">x</span>
+  <h1 *ngIf="data.info">Surveys Taken</h1>
+  <h1 *ngIf="!data.info">{{data.name}}</h1>
+  <mat-form-field *ngIf="!data.info" class="viewField">
+    <mat-select [formControl]="chartControl" (selectionChange)="createChart()" required>
+      <mat-option *ngFor="let type of types" [value]="type">{{type}}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="chartControl.hasError('required')">Please choose an chart type</mat-error>
+    <mat-hint>{{chartControl.value?.sound}}</mat-hint>
+  </mat-form-field>
+  <div class="chartHolder">
+    <mat-card>
+      <canvas id="result"></canvas>
+    </mat-card>
+  </div>
+  <button type="button" mat-raised-button *ngIf="data.info" class="button" color="primary" (click)="passData()">Details</button>
+  <!-- <button class="button" (click)="passList()">Details</button> -->
+  <!--<button *ngIf="!data.email" class="button" (click)="close()">OK</button>-->
+</div>

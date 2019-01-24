@@ -1,0 +1,260 @@
+* {
+    text-decoration: none;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+}
+
+.mainDiv {
+    position: absolute;
+    height: auto;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, .2);
+    width: 100%;
+}
+
+/* ToolBar */
+
+.example-icon {
+    padding: 0 14px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+/* Card Title */
+
+.surveyName {
+    font-size: 25px;
+    padding: 15px;
+    text-align: center;
+    background: #3c54b4;
+    color: rgb(238, 236, 236);
+    border-radius: 1px;
+    box-shadow: 1px 1px 2px black;
+}
+
+.topicName {
+    margin-top: 20px;
+    margin-bottom: -10px;
+    font-size: 25px;
+    padding: 20px 3px;
+    color: rgb(71, 69, 69);
+}
+
+/* Card */
+
+.example-card {
+    width: 60%;
+    padding: 10px;
+    margin: 50px auto;
+}
+
+.question-card {
+    width: 100%;
+    margin: 0px auto;
+    padding: 0;
+    border: 1px solid gainsboro;
+}
+
+/* Question Slider  */
+
+.questionHolder {
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.question {
+    font-family: 'candara';
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    padding: 20px;
+    background: #ddd7d7;
+}
+
+/* options */
+
+.optionsholder .option {
+    padding: 10px;
+    line-height: center;
+    margin: 5px auto;
+}
+
+.optionValue {
+    font-family: 'candara';
+    font-weight: bold;
+    font-size: 16px;
+    color: rgb(61, 61, 59);
+}
+
+/* .optionsholder .option:nth-child(even) {}
+
+.optionsholder .option:nth-child(even):hover {
+    background: #f1f1f1;
+}
+
+.optionsholder .option:nth-child(odd) {}
+
+.optionsholder .option:nth-child(odd):hover {
+    background: #f1f1f1;
+} */
+
+/* TextArea */
+
+textarea {
+    border-radius: 1px;
+    height: 230px;
+    width: 100%;
+    resize: none;
+    padding: 10px;
+    font-size: 15px;
+    font-family: 'candara';
+    border: 1px solid rgb(196, 194, 194);
+}
+
+.additionalCommentSection,
+.textFieldContainer {
+    padding: 20px;
+}
+
+.commentLabel {
+    font-family: 'candara';
+    font-weight: bold;
+    font-size: 16px;
+    color: rgb(61, 61, 59);
+    margin-bottom: 10px;
+}
+
+.commentLabel span {
+    color: rgb(134, 134, 134);
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.additionalTextArea {
+    height: 80px;
+}
+
+/* Slider */
+
+.slideContainer {
+    width: 100%;
+    padding: 50px;
+}
+
+.slideContainer h1 {
+    font-size: 25px;
+    letter-spacing: 1.1px;
+    font-family: candara;
+    font-weight: 600;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 2px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #3c54b4;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #3c54b4;
+    cursor: pointer;
+}
+
+.slideContainer h1 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Pagination */
+
+.pages {
+    display: none;
+    min-height: 320px;
+    padding: 20px;
+    height: 100%;
+}
+
+#page1 {
+    display: block;
+}
+
+#topic {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+span {
+    font-size: 17px;
+    margin-left: 10px;
+}
+
+.button {
+    margin: 10px 0px;
+    margin-right: 10px;
+    width: 90px;
+    height: 35px;
+    padding: 10px;
+    border: 7px;
+    font-size: 12px;
+}
+
+/* Navigation */
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 20px;
+}
+
+/* Responsive behaviour */
+
+@media(max-width: 1000px) {
+    .example-card {
+        width: 90%;
+        padding: 10px;
+        margin: 50px auto;
+    }
+}
+
+@media(max-width: 590px) {
+    .navigation {
+        display: grid;
+        align-items: center;
+    }
+}
+
+/*
+
+@media(max-width: 420px) {
+    .topic h1 {
+        font-size: 15px;
+        padding: 5px;
+    }
+} */

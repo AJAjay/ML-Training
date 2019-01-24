@@ -1,0 +1,111 @@
+<div class="mainDiv">
+  <h1 class="pageTitle">Travel Report</h1>
+  <mat-divider></mat-divider>
+  <div class="selector">
+    <div class="nameSelector">
+      <div>
+        <label for="surveyName">SurveyName</label>
+        <select #surveyName (change)="selectSurveyName($event.target.value)">
+          <option value="selectHere" selected hidden>Select here</option>
+          <option *ngFor="let obj of surveyNames" [value]="obj?.surveyName">{{obj?.surveyName}}</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="participant">Participant</label>
+        <select #participantName (change)="selectParticipant($event.target.value)">
+          <ng-container *ngIf="participants?.length > 0 else showParticipants">
+            <option selected value="All Participants" hidden>All
+              Participants</option>
+            <option *ngFor="let obj of participants" [selected]="obj?.selected" [value]="obj.userID">{{obj.userID}}</option>
+          </ng-container>
+          <ng-template #showParticipants>
+              <option selected value="No participants yet" disabled>No participants yet</option>
+          </ng-template>
+        </select>
+      </div>
+
+      <div>
+        <label for="fromDate">From Date</label>
+        <input type="date" [formControl]="fromDate">
+      </div>
+      <div>
+        <label for="toDate">To Date</label>
+        <input type="date" [formControl]="toDate">
+      </div>
+      <div class="btncontainer">
+        <div class="expbtn">
+          <button type="button" class="button" [disabled]="!(exportTable && displayData?.length>0)" (click)="ExportToExcel()">Export</button>
+        </div>
+        <div class="showbtn">
+          <button type="button" class="button" (click)="getResult()">Show</button>
+        </div>
+      </div>
+
+    </div>
+
+    <mat-divider></mat-divider>
+
+  </div>
+  <div class="content">
+    <ng-container *ngIf="displayData">
+      <table class="table table-bordered" #table>
+        <thead>
+          <tr class="heading">
+            <td>Survey Name:</td>
+            <td>{{surveyName.value}}</td>
+          </tr>
+          <tr class="heading">
+            <td>Report From:</td>
+            <td>{{ fromDate.value }}</td>
+          </tr>
+          <tr class="heading">
+            <td>Report To:</td>
+            <td>{{toDate.value}}</td>
+          </tr>
+          <tr></tr>
+          <tr>
+            <th *ngFor="let topic of topics;">
+              {{ topic }}
+            </th>
+            <!-- <th>Average</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let participant of displayData; let i = index">
+            <tr>
+              <td>
+                {{ participant?.userID |titlecase }}
+              </td>
+              <td *ngFor="let value of participant.topics;" style="text-align: center;">
+                <!-- {{calculateAverage(i, value["sliderAverage"])}} -->
+                {{ (value["sliderAverage"] == 'undefined' || value["sliderAverage"] == null) ? '–': value["sliderAverage"] | number: '0.1-1'}}
+              </td>
+              <!-- <td>{{ (participant?.overallAverage == 'undefined' || participant?.overallAverage == null) ? '–':
+                participant?.overallAverage | number: '0.1-1'}}</td> -->
+            </tr>
+          </ng-container>
+          <tr>
+            <td>
+              <strong>Average</strong>
+            </td>
+            <td *ngFor="let avg of average">
+              {{ avg != '0' ? (avg | number: '0.2-2'): '–' }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Overall Average</strong>
+            </td>
+            <td>
+              <strong>
+                {{ calculateOverallAverage(average) | number: '0.2-2' }}
+              </strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+
+  </div>
+</div>

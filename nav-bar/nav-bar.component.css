@@ -1,0 +1,182 @@
+/* Toolbar */
+
+nav {
+    padding: 0 40px;
+    font-family: 'candara';
+    width: 100%;
+    box-sizing: border-box;
+    background: #3c54b4;
+    display: flex;
+    color: rgb(235, 235, 235);
+    justify-content: space-between;
+}
+
+.ToolbarContainer {
+    padding: 5px 0px;
+    box-sizing: border-box;
+}
+
+.ToolbarContainer mat-icon {
+    margin-top: 10px;
+}
+
+.app {
+    display: flex;
+}
+
+span .appLogo {
+    width: 200px;
+    height: 45px;
+    cursor: pointer;
+    margin-left: 50px;
+    border-radius: 4px;
+}
+
+.appName {
+    font-size: 25px;
+    margin-top: 5px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+/* user-area */
+
+.user-area {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.userName {
+    font-size: 17px;
+    text-align: right;
+}
+
+.logout {
+    margin-left: auto;
+    margin-top: -10px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    border-radius: 1px;
+    font-size: 13px;
+    padding: 0px;
+    width: 50px;
+    font-weight: bold;
+}
+
+/* Logo */
+
+.logoContainer {
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    margin-bottom: 0px;
+}
+
+.logoContainer img {
+    margin-left: 20px;
+    margin-top: -20px;
+    width: 170px;
+    height: 40px;
+}
+
+/* Icons */
+
+.action-icon {
+    padding: 0 14px;
+    cursor: pointer;
+}
+
+/* Side Menu Nav */
+
+.sideMenu {
+    position: fixed;
+    z-index: 1;
+    width: 280px;
+    background: #fff;
+    margin-top: -65px;
+    height: 100vh;
+    box-shadow: 1px 1px 10px rgb(168, 168, 168);
+}
+
+.sideMenu.hide {
+    position: relative;
+    display: none;
+}
+
+.sideMenu .quickLinks {
+    text-align: center;
+    font-family: candara;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px;
+    color: rgb(70, 69, 69);
+}
+
+.sideMenu .close {
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
+
+.sideMenu {
+    padding-top: 40px;
+    font-size: 13px;
+}
+
+.sideMenu a {
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: rgb(70, 69, 69);
+    padding: 20px 30px;
+    font-family: candara;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.sideMenu a:hover {
+    background: #3c54b4;
+    color: #fff;
+}
+
+.sideMenu a:hover .fa {
+    color: #fff;
+}
+
+.sideMenu a .fa {
+    color: rgb(70, 69, 69);
+    font-size: 1rem;
+    margin-right: 0.8rem;
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    padding: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.sideMenunav a.active {
+    background: #1e2329;
+    border-left: 5px solid rgb(52, 90, 172);
+    padding: 15px 30px 15px 25px;
+}
+
+.sideMenu a .fa#active {
+    color: rgb(52, 90, 172);
+}
+
+/* dropdown */
+
+.dropdown {
+    position: relative;
+    display: block;
+}
+
+#dropdown-content-1,
+#dropdown-content-2,
+#dropdown-content-3 {
+    display: none;
+    margin-left: 20px;
+}

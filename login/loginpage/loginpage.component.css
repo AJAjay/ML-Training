@@ -1,0 +1,131 @@
+* {
+    box-sizing: border-box;
+}
+
+.mainDiv {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: url(../../../assets/images/login.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+h1{
+    font-family: 'candara';
+    float: left;
+}
+
+.backgroundOverlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .1);
+}
+
+.mainBox {
+    position: absolute;
+    left: 10%;
+    right: 50%;
+    top: 30%;
+    bottom: 30%;
+    margin: auto;
+}
+
+.loginBox {
+    height: auto;
+    width: 350px;
+    padding: 20px;
+    padding-top: 30px;
+    background: #fff;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 1px #cccccc;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+input {
+    border: none;
+    padding: 10px;
+    width: 100%;
+    height: 40px;
+    outline: none;
+    margin-bottom: 20px;
+    border: 1px solid #cccccc;
+    transition: .5s;
+}
+
+input:focus {
+    box-shadow: 1px 1px 10px rgb(52, 90, 172);
+}
+.fa-eye{
+    cursor: pointer;
+    margin-left: -30px;
+}
+.button {
+    margin-bottom: 40px;
+    width: 100%;
+    height: 40px;
+}
+
+
+.login {
+    margin-top: -20px;
+    float: left;
+}
+
+.login a {
+    color: black;
+    cursor: pointer;
+    font-size: 13px;
+    transition: .5;
+    font-weight: bold;
+    
+}
+
+.signup {
+    margin-top: -20px;
+    float: right;
+}
+
+.signup a {
+    color: black;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: .5;
+}
+
+.text-dangerRed {
+    margin-top: -15px;
+    margin-bottom: 10px;
+    float: right;
+    font-size: 13px;
+    color: red;
+}
+.logoContainer img{
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+/* Responsive  */
+
+@media only screen and (max-width: 800px) {
+    .loginBox {
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+    .loginBox,
+    .signup {
+        width: 250px;
+    }
+}

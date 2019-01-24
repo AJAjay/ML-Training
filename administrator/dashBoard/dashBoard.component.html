@@ -1,0 +1,56 @@
+<mat-sidenav-container class="example-container" (backdropClick)="close('backdrop')">
+    <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
+        <div class="logoContainer">
+            <img src="./../assets/images/prodapt_logo.png" alt="PRODAPT">
+        </div>
+        <mat-divider></mat-divider>
+        <div class="quickLinks">Quick Links</div>
+        <mat-divider></mat-divider>
+        <mat-icon class="action-icon close" (click)="close('toggle button')">close</mat-icon>
+        <nav>
+            <a class="dropdown" (click)="openSubMenu(1)">
+                <i class="fa fa-file-text" aria-hidden="true"></i>Survey</a>
+            <div class="dropdown-content" id="dropdown-content-1">
+                <a [routerLink]="['../create/newSurvey']" [target]="'iframe_a'">
+                    <i class="fa fa-plus" aria-hidden="true"></i>Create Survey</a>
+                <a [routerLink]="['../create/importSurvey']" [target]="'iframe_a'">
+                    <i class="fa fa-upload" aria-hidden="true"></i>Import Survey</a>
+                <a [routerLink]="['../viewSurveyList']" [target]="'iframe_a'">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>View / Update Survey</a>
+            </div>
+            <a class="dropdown" (click)="openSubMenu(2)">
+                <i class="fa fa-clone" aria-hidden="true"></i>Reports</a>
+            <div class="dropdown-content" id="dropdown-content-2">
+                <a [routerLink]="['../viewResultList']" [target]="'iframe_a'">
+                    <i class="fa fa-bar-chart" aria-hidden="true"></i>Topic wise Results</a>
+                <a [routerLink]="['../participantWiseResult']" [target]="'iframe_a'">
+                    <i class="fa fa-address-card" aria-hidden="true"></i>Participant wise Results</a>
+            </div>
+        </nav>
+    </mat-sidenav>
+    
+    <mat-sidenav-content>
+            <mat-toolbar color="primary">
+                    <mat-toolbar-row>
+                        <mat-icon class="action-icon" (click)="sidenav.open()">menu</mat-icon>
+            
+                        <span class="example-spacer"></span>
+                        <span>
+                            <img class="appLogo" src="../../../assets/images/survey_logo.png" alt="">
+                        </span>
+                        <span class="appName">SurveyPro</span>
+                        <span class="example-spacer"></span>
+            
+                        <div class="user-area">
+                            <span class="userName">
+                                Welcome, {{name}}
+                            </span>
+                            <span class="logout" (click)="logout()">Logout</span>
+                            <!-- <button class="button-logOut" (click)="logout()" title="Logout">Logout</button> -->
+                        </div>
+                    </mat-toolbar-row>
+                </mat-toolbar>
+        <!-- <iframe src="/create/newSurvey" name="iframe_a" id="iframe" (load)="close()"></iframe> -->
+        <iframe src="/viewSurveyList" name="iframe_a" id="iframe" (load)="close()"></iframe>
+    </mat-sidenav-content>
+</mat-sidenav-container>

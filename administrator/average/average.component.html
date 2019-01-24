@@ -1,0 +1,47 @@
+<div class="mainDiv">
+  <h1>Average Result</h1>
+
+  <label for="surveyName">SurveyName</label>
+  <select (change)="selectSurveyName($event.target.value)">
+    <option value="selectHere" selected hidden>Select here</option>
+    <option *ngFor="let obj of surveyNames" [value]="obj.surveyName">{{obj.surveyName}}</option>
+  </select>
+  <input type="button" class="button" value="Show" (click)="getResult()">
+
+  <div class="content">
+
+
+    <table #table>
+      <tr class="heading">
+        <td>Survey Name : {{surveyName}}</td>
+      </tr>
+
+      <tbody class="topics" *ngFor="let topic of topics;let i=index">
+        <tr class="blank_row">
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td class="table-topic">{{topic.topic}}</td>
+          <td class="table-topic"></td>
+        </tr>
+        <!-- <tr>
+          <th>Question</th>
+          <th>Answer</th>
+        </tr> -->
+        <tr *ngFor="let question of topic.questions;let j=index">
+          <td>{{question.question}}</td>
+          <td *ngIf="question.question_type!='textField'">{{objectKeys(question.options)}}</td>
+          <td *ngIf="question.question_type=='textField'">{{question.options}}</td>
+        </tr>
+        <tr *ngIf="topic.SliderAverage != null">
+          <td class="average">Average</td>
+          <td class="average">{{topic.SliderAverage}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+
+
+</div>

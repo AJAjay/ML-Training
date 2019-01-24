@@ -1,0 +1,168 @@
+<!-- Main Container -->
+<div *ngIf="surveyReady" class="container animated fadeIn">
+  <div class="heading">
+    <a [routerLink]="['/viewResultList']" class="backToList"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back to List</a>
+    <h1 *ngIf="view" class="pageTitle">Reviewed Survey</h1>
+    <h1 *ngIf="!view" class="pageTitle">Survey Pending for Review</h1>
+  </div>
+  <mat-divider></mat-divider>
+  <!-- Main Form -->
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+    <label>Survey Name :</label>
+    <input type="text" formControlName="surveyName" disabled placeholder="SurveyName" (change)="validate()">
+    <span *ngIf="myForm.controls.surveyName.touched">
+      <span class="text-dangerRed" *ngIf="SurveyNameValidate == 'fail';else available">
+        Please enter another Survey name
+      </span>
+      <span class="text-success">
+        <ng-template #available>
+          &#10004;
+        </ng-template>
+      </span>
+    </span>
+
+
+    <!-- General Topic -->
+    <div formArrayName="general" class="generalTopics accordionContainer">
+        <button type="button" mat-raised-button class="accordionButton" color="primary" (click)="accordionGeneral()">General</button>
+        <!-- <input class="accordionButton" type="button" value="General" (click)="accordionGeneral()"> -->
+        <span>
+          <i class="fa fa-expand plus" id="plus_g" aria-hidden="true"></i>
+        </span>
+        <span>
+          <i class="fa fa-compress minus" id="minus_g" aria-hidden="true"></i>
+        </span>
+        <div class="accordionContent" id="accordion">
+          <div class="questions animated fadeIn" *ngFor="let comp of myForm.get('general').controls; let i=index">
+            <div [formGroupName]="i">
+              <table>
+                <tr>
+                  <td>
+                    <label>Question {{i+1}}:</label>
+                  </td>
+                  <td>
+                    <input class="quesInput" type="text" formControlName="question" required placeholder="Enter your question">
+                    <span>
+                      <i class="fa fa-trash fa-lg" aria-hidden="true" *ngIf="!view" (click)="deleteGeneralQuestion(i)"></i>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>Question Type:</label>
+                  </td>
+                  <td>
+                    <select formControlName="questionType" required placeholder="Question type">
+                      <option value="" selected disabled hidden>Select here</option>
+                      <option *ngFor="let type of GeneralQuestionType" [value]="type.value"> {{type.viewValue}}
+                      </option>
+                    </select>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <button type="button" mat-raised-button class="button" color="primary" (click)="addGeneralQuestion()">Add Question</button>
+          <!-- <input class="button" type="button" value="Add Question" (click)="addGeneralQestion()"> -->
+        </div>
+      </div>
+      <!--General Topic End-->
+
+
+    <!-- Topics FormArray -->
+    <div formArrayName="topics" class="accordionContainer">
+      <div class="topics animated fadeIn" *ngFor="let comp of myForm.get('topics').controls; let i=index">
+        <button type="button" mat-raised-button class="accordionButton" color="primary" (click)="accordion(i+1)">{{comp.value.topic || "New Topic"}}</button>
+        <!-- <input class="accordionButton" type="button" value="Topic{{i+1}} : {{comp.value.topic}}" (click)="accordion(i+1)"> --> 
+
+        <span>
+          <i class="fa fa-expand plus" id="plus{{i+1}}" aria-hidden="true"></i>
+        </span>
+
+        <span>
+          <i class="fa fa-compress minus" id="minus{{i+1}}" aria-hidden="true"></i>
+        </span>
+        <div class="accordionContent" id="accordion{{i+1}}">
+          <legend>
+            <h3>Topic {{i+1}}:</h3>
+          </legend>
+          <div [formGroupName]="i">
+            <div class="topic">
+              <label>Topic Name :</label>
+              <input type="text" formControlName="topic" required placeholder="Topic Name" />
+              <span>
+                <i class="fa fa-trash fa-lg" aria-hidden="true" *ngIf="!view" (click)="deleteTopic(i)"></i>
+              </span>
+            </div>
+            <!-- Questions FormArray -->
+            <div formArrayName="questions">
+              <div class="questions animated fadeIn" *ngFor="let question of comp.get('questions').controls; let j=index">
+                <legend>
+                  <h4>Question {{j+1}}</h4>
+                </legend>
+                <div [formGroupName]="j">
+                  <table>
+                    <tr>
+                      <td>
+                        <label>Question :</label>
+                      </td>
+                      <td>
+                        <input type="text" class="quesInput" formControlName="question" required placeholder="Question" />
+                        <span>
+                          <i class="fa fa-trash fa-lg" aria-hidden="true" *ngIf="!view" (click)="deleteQuestion(comp.controls.questions, j)"></i>
+                        </span>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label>Question Type:</label>
+                      </td>
+                      <td>
+                        <select formControlName="questionType" required placeholder="Question type">
+                          <option value="" selected disabled hidden>Select here</option>
+                          <option *ngFor="let type of questionType" [value]="type.value"> {{type.viewValue}}
+                          </option>
+                        </select>
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- Options FormArray -->
+                  <div formArrayName="options" [hidden]="question.value.questionType == 'slider' || question.value.questionType == 'textField'">
+                    <div class="options animated fadeIn" *ngFor="let option of question.get('options').controls; let k=index">
+                      <div [formGroupName]="k">
+                        <label>Option {{k+1}}:</label>
+                        <input type="text" formControlName="option" required placeholder="Enter your option">
+                        <span>
+                          <i class="fa fa-trash fa-lg" aria-hidden="true" *ngIf="!view" (click)="deleteOption(question.controls.options,k)"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <!-- Add NewOption Button -->
+                    <span>
+                      <button type="button" mat-raised-button class="button" color="primary" [disabled]="view" (click)="addNewOption(question.controls.options,i+1)">Add Option</button>
+                      <!-- <input class="button" type="button" value="Add Option" (click)="addNewOption(question.controls.options,i+1)"> -->
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <!-- Add NewQuestion Button -->
+              <button type="button" mat-raised-button class="button" color="primary" [disabled]="view" (click)="addNewQuestion(comp.controls.questions,i+1)">Add Question</button>
+              <!-- <input class="button" type="button" value="Add Question" (click)="addNewQuestion(comp.controls.questions,i+1)"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Add NewTopic Button -->
+    <!-- <button type="button" mat-raised-button class="button" color="primary" [disabled]="view" (click)="addNewTopic()">Add Topic</button> -->
+    <input class="button" type="button" [disabled]="view" value="Add Topic" (click)="addNewTopic()">
+    <!-- Update Survey Button -->
+    <!-- <button mat-raised-button class="button" color="primary" [disabled]=" myForm.invalid || view">Update</button> -->
+    <button type="submit" [disabled]=" myForm.invalid || view" class="button">Update</button>
+    <!-- Review Survey Button     -->
+    <!-- <button type="button" mat-raised-button class="button" color="primary" [disabled]="rdis || myForm.invalid || view" *ngIf="supervisor"
+      (click)="reviewed()">Reviewed</button> -->
+    <input type="button" [disabled]="rdis || myForm.invalid || view" *ngIf="supervisor" (click)="reviewed()" class="button" value="Reviewed">
+  </form>
+</div>
